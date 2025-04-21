@@ -15,4 +15,7 @@ class Product(models.Model):
         verbose_name = "Услуга"
         ordering = ["-created_at"]
 
+    def __str__(self):
+        return self.name
+
 
