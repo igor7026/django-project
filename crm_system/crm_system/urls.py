@@ -27,6 +27,7 @@ urlpatterns = [
     path('accounts/logout/', LogoutView.as_view(next_page=settings.LOGOUT_REDIRECT_URL, http_method_names=['get', 'post']), name='logout'),
     path('', TemplateView.as_view(template_name='users/index.html'), name='index'),
     path('products/', include('products.urls')),
+    path('ads/', include('ads.urls')),
 
 ]
 
