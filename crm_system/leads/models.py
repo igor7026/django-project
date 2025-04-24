@@ -3,7 +3,7 @@ from django.db import models
 from ads.models import Ads
 
 
-class Leads(models.Model):
+class Lead(models.Model):
     first_name = models.CharField(max_length=100, verbose_name='Имя')
     last_name = models.CharField(max_length=100, verbose_name='Фамилия')
     email = models.EmailField(verbose_name='Email')

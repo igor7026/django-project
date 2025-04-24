@@ -28,6 +28,8 @@ urlpatterns = [
     path('', TemplateView.as_view(template_name='users/index.html'), name='index'),
     path('products/', include('products.urls')),
     path('ads/', include('ads.urls')),
+    path('leads/', include('leads.urls')),
+    path('contracts/', include('contracts.urls')),
 
 ]
 
