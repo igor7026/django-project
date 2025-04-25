@@ -21,11 +21,13 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path, include
 from django.views.generic import TemplateView
 
+from .views import DashboardView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/login/', LoginView.as_view(), name='login'),
     path('accounts/logout/', LogoutView.as_view(next_page=settings.LOGOUT_REDIRECT_URL, http_method_names=['get', 'post']), name='logout'),
-    path('', TemplateView.as_view(template_name='users/index.html'), name='index'),
+    path('', DashboardView.as_view(), name='index'),
     path('products/', include('products.urls')),
     path('ads/', include('ads.urls')),
     path('leads/', include('leads.urls')),
