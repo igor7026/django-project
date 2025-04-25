@@ -1,12 +1,12 @@
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.urls import reverse_lazy
 
+from crm_system.mixins import CustomPermissionRequiredMixin
 from .models import Contract
 
 # Create your views here.
 
-class ContractsListView(PermissionRequiredMixin, ListView):
+class ContractsListView(CustomPermissionRequiredMixin, ListView):
     permission_required = 'contracts.view_contract'
     model = Contract
     template_name = 'contracts/contracts-list.html'
@@ -14,13 +14,13 @@ class ContractsListView(PermissionRequiredMixin, ListView):
 
 
 
-class ContractsDetailView(PermissionRequiredMixin, DetailView):
+class ContractsDetailView(CustomPermissionRequiredMixin, DetailView):
     permission_required = 'contracts.view_contract'
     model = Contract
     template_name = 'contracts/contracts-detail.html'
  
 
-class ContractsCreateView(PermissionRequiredMixin, CreateView):
+class ContractsCreateView(CustomPermissionRequiredMixin, CreateView):
     permission_required = 'contracts.add_contract'
     model = Contract
     template_name = 'contracts/contracts-create.html'
@@ -28,7 +28,7 @@ class ContractsCreateView(PermissionRequiredMixin, CreateView):
     success_url = reverse_lazy('contracts:contracts-list')
 
 
-class ContractsUpdateView(PermissionRequiredMixin, UpdateView):
+class ContractsUpdateView(CustomPermissionRequiredMixin, UpdateView):
     permission_required = 'contracts.change_contract'
     model = Contract
     template_name = 'contracts/contracts-edit.html'
@@ -36,7 +36,7 @@ class ContractsUpdateView(PermissionRequiredMixin, UpdateView):
     success_url = reverse_lazy('contracts:contracts-list')
 
 
-class ContractsDeleteView(PermissionRequiredMixin, DeleteView):
+class ContractsDeleteView(CustomPermissionRequiredMixin, DeleteView):
     permission_required = 'contracts.delete_contract'
     model = Contract
     template_name = 'contracts/contracts-delete.html'

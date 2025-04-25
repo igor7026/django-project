@@ -1,25 +1,24 @@
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from django.contrib.auth.mixins import PermissionRequiredMixin
 
-
+from crm_system.mixins import CustomPermissionRequiredMixin
 from .models import Lead
 
 
-class LeadsListView(PermissionRequiredMixin, ListView):
+class LeadsListView(CustomPermissionRequiredMixin, ListView):
     permission_required = 'leads.view_lead'
     model = Lead
     template_name = 'leads/leads-list.html'
     context_object_name = 'leads'
 
 
-class LeadsDetailView(PermissionRequiredMixin, DetailView):
+class LeadsDetailView(CustomPermissionRequiredMixin, DetailView):
     permission_required = 'leads.view_lead'
     model = Lead
     template_name = 'leads/leads-detail.html'
 
 
-class LeadsCreateView(PermissionRequiredMixin, CreateView):
+class LeadsCreateView(CustomPermissionRequiredMixin, CreateView):
     permission_required = 'leads.add_lead'
     model = Lead
     fields = ['first_name', 'last_name', 'email', 'phone', 'ads']
@@ -27,7 +26,7 @@ class LeadsCreateView(PermissionRequiredMixin, CreateView):
     success_url = reverse_lazy('leads:leads-list')
 
 
-class LeadsUpdateView(PermissionRequiredMixin, UpdateView):
+class LeadsUpdateView(CustomPermissionRequiredMixin, UpdateView):
     permission_required = 'leads.change_lead'
     model = Lead
     fields = ['first_name', 'last_name', 'email', 'phone', 'ads']
@@ -35,7 +34,7 @@ class LeadsUpdateView(PermissionRequiredMixin, UpdateView):
     success_url = reverse_lazy('leads:leads-list')
 
 
-class LeadsDeleteView(PermissionRequiredMixin, DeleteView):
+class LeadsDeleteView(CustomPermissionRequiredMixin, DeleteView):
     permission_required = 'leads.delete_lead'
     model = Lead
     template_name = 'leads/leads-delete.html'

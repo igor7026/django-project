@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'ads.apps.AdsConfig',
     'leads.apps.LeadsConfig',
     'contracts.apps.ContractsConfig',
+    'customers.apps.CustomersConfig',
 
 ]
 

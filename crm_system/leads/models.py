@@ -10,6 +10,7 @@ class Lead(models.Model):
     phone = models.CharField(max_length=15, verbose_name='Телефон')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     ads = models.ManyToManyField('ads.Ads', verbose_name='Рекламные кампании')
+    status = models.CharField(max_length=20, verbose_name='Статус', default='lead')
     
     class Meta:
         verbose_name = 'Потенциальный клиент'
