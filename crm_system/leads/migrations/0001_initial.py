@@ -4,29 +4,46 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
-        ('ads', '0001_initial'),
+        ("ads", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Lead',
+            name="Lead",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('first_name', models.CharField(max_length=100, verbose_name='Имя')),
-                ('last_name', models.CharField(max_length=100, verbose_name='Фамилия')),
-                ('email', models.EmailField(max_length=254, verbose_name='Email')),
-                ('phone', models.CharField(max_length=15, verbose_name='Телефон')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')),
-                ('ads', models.ManyToManyField(to='ads.ads', verbose_name='Рекламные кампании')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("first_name", models.CharField(max_length=100, verbose_name="Имя")),
+                ("last_name", models.CharField(max_length=100, verbose_name="Фамилия")),
+                ("email", models.EmailField(max_length=254, verbose_name="Email")),
+                ("phone", models.CharField(max_length=15, verbose_name="Телефон")),
+                (
+                    "created_at",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Дата создания"
+                    ),
+                ),
+                (
+                    "ads",
+                    models.ManyToManyField(
+                        to="ads.ads", verbose_name="Рекламные кампании"
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Потенциальный клиент',
-                'verbose_name_plural': 'Потенциальные клиенты',
-                'ordering': ['-created_at'],
+                "verbose_name": "Потенциальный клиент",
+                "verbose_name_plural": "Потенциальные клиенты",
+                "ordering": ["-created_at"],
             },
         ),
     ]

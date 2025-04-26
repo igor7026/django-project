@@ -2,8 +2,8 @@ from django.db import models
 
 # Create your models here.
 
-class Product(models.Model):
 
+class Product(models.Model):
     name = models.CharField(max_length=50, verbose_name="Название")
     description = models.TextField(verbose_name="Описание")
     cost = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Цена")
@@ -17,5 +17,3 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
-
-

@@ -5,29 +5,56 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
-        ('products', '0002_alter_product_options_alter_product_cost_and_more'),
+        ("products", "0002_alter_product_options_alter_product_cost_and_more"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Contract',
+            name="Contract",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100, verbose_name='Название')),
-                ('start_date', models.DateField(verbose_name='Начало')),
-                ('end_date', models.DateField(verbose_name='Конец')),
-                ('cost', models.DecimalField(decimal_places=2, max_digits=10, verbose_name='Стоимость')),
-                ('document', models.FileField(blank=True, null=True, upload_to='contracts/', verbose_name='Документ')),
-                ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='products.product', verbose_name='Услуга')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100, verbose_name="Название")),
+                ("start_date", models.DateField(verbose_name="Начало")),
+                ("end_date", models.DateField(verbose_name="Конец")),
+                (
+                    "cost",
+                    models.DecimalField(
+                        decimal_places=2, max_digits=10, verbose_name="Стоимость"
+                    ),
+                ),
+                (
+                    "document",
+                    models.FileField(
+                        blank=True,
+                        null=True,
+                        upload_to="contracts/",
+                        verbose_name="Документ",
+                    ),
+                ),
+                (
+                    "product",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="products.product",
+                        verbose_name="Услуга",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Контракт',
-                'verbose_name_plural': 'Контракты',
-                'ordering': ['name'],
+                "verbose_name": "Контракт",
+                "verbose_name_plural": "Контракты",
+                "ordering": ["name"],
             },
         ),
     ]
